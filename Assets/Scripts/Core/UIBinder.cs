@@ -19,7 +19,7 @@ public class UIBinder: MonoBehaviour
         var cm = CurrencyManager.I;
         fameText.text = $"Fame: {cm.Fame:0}";
         fansText.text = $"Fans: {cm.Fans:0}";
-        cashText.text = $"Cash: {cm.Cash:0}";
+        cashText.text = $"Cash: ${cm.Cash:0}";
 
         for (int i = 0; i < service.upgrades.Length && i < upgradeLabels.Length; i++)
         {

@@ -36,7 +36,7 @@ public class FameUpgradeButton : MonoBehaviour
         if (cm.Fame >= req)
         {
             level++;
-            cm.famePerSec += amountPerLevel;
+            cm.famePerSec *= (2.0 + amountPerLevel);
         }
     }
 }

@@ -23,7 +23,7 @@ public class CurrencyManager : MonoBehaviour
     public bool fansUnlocked = false;
 
     [Header("Coupling")]
-    public double cashFromFansFactor = 3.0;
+    public double cashFromFansFactor = 10.0;
 
     private void Update()
     {
@@ -31,8 +31,7 @@ public class CurrencyManager : MonoBehaviour
         Fame += famePerSec * fameMult * dt;
         if (fansUnlocked)
         {
-            Fans += fansPerSec * fansMult * dt;
-            // cash starts once fans exist
+            Fans += fansPerSec * fansMult * dt; // cash starts once fans exist
             double cashRate = baseCashPerSec + (fansPerSec * cashFromFansFactor);
             Cash += cashRate * cashMult * dt;
         }
@@ -53,5 +52,10 @@ public class CurrencyManager : MonoBehaviour
         }
         Fame -= amount;
         return true;
+    }
+
+    void Start() {
+        if (PrestigeManager.I != null)
+            PrestigeManager.I.ApplyPermanentMultiplier(this);
     }
 }

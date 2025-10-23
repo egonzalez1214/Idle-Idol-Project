@@ -1,21 +1,21 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
-public class TitleMenu : MonoBehaviour
-{
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public void StartGame()
-    {
-        SceneManager.LoadScene("Game");
+public class TitleMenu : MonoBehaviour {
+    [SerializeField] private string gameSceneName = "Game"; // your main scene name
+    [SerializeField] private TMP_Text versionLabel;
+
+    void Start() {
+        if (versionLabel)
+            versionLabel.text = $"v{Application.version}";
     }
 
-    // Update is called once per frame
-    public void QuitGame()
-    {
-#if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;
-#else
-        Applicaton.Quit();
-#endif
+    public void OnStartGame() {
+        SceneManager.LoadScene(gameSceneName);
+    }
+
+    public void OnQuitGame() {
+        Application.Quit();
     }
 }

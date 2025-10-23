@@ -68,7 +68,7 @@ public class FansUnlockButton : MonoBehaviour
         if (cm.TrySpendCash(cost))
         {
             level++;
-            cm.fansPerSec *= (1.0 + amountPerLevel);
+            cm.fansPerSec *= (2.0 + amountPerLevel);
         }
     }
 }
